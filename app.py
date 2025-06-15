@@ -1,4 +1,5 @@
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, send_from_directory, render_template, request, redirect, url_for
+import os
 
 app = Flask(__name__, 
             static_folder='static',
@@ -34,10 +35,21 @@ def contact():
 # Catch-all route for client-side routing
 @app.route('/<path:path>')
 def catch_all(path):
+    # List of valid routes
+    valid_routes = ['', 'about', 'skills', 'portfolio', 'contact']
+    
+    # If the path is a valid route, redirect to it
+    if path in valid_routes:
+        return redirect(url_for(path))
+        
     # If the path is for static files, serve them
     if path.startswith('static/'):
-        return send_from_directory('', path)
-    # Otherwise, serve the index.html and let the client-side router handle it
+        try:
+            return send_from_directory('', path)
+        except:
+            pass
+            
+    # For any other route, serve the index.html and let client-side handle it
     return render_template('index.html', active_page='home')
 
 if __name__ == '__main__':
