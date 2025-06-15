@@ -1,5 +1,6 @@
-import os
+from http import HTTPStatus, HTTPMethod
 from flask import Flask, request, send_from_directory, render_template, redirect, url_for
+import os
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
@@ -12,9 +13,16 @@ init_routes(app)
 def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
-# This is the entry point for Vercel
+# This is the handler that Vercel will use
 def handler(event, context):
-    return app(event, context)
+    # This is a simple handler that will return a basic response
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'text/html',
+        },
+        'body': 'Hello from Vercel!'
+    }
 
 # This is needed for local development
 if __name__ == '__main__':
