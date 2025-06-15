@@ -24,10 +24,7 @@ def contact():
     return render_template('contact.html', active_page='contact')
 
 # This is needed for Vercel
-def vercel_handler(event, context):
-    from vercel_wsgi import VercelWsgi
-    wsgi = VercelWsgi(app)
-    return wsgi(event, context)
+app = app
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

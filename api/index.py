@@ -13,13 +13,8 @@ def serve_static(path):
     return send_from_directory(app.static_folder, path)
 
 # This is the entry point for Vercel
-def handler(req, context):
-    with app.request_context(req.environ):
-        try:
-            response = app.full_dispatch_request()
-            return response
-        except Exception as e:
-            return str(e), 500
+def handler(event, context):
+    return app(event, context)
 
 # This is needed for local development
 if __name__ == '__main__':
