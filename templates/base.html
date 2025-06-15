@@ -32,7 +32,6 @@
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
         {% if active_page != 'home' %}
         <script>
-            // Scroll to top on page load for all pages except home
             document.addEventListener('DOMContentLoaded', function() {
                 window.scrollTo(0, 0);
             });
