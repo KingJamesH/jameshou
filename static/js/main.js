@@ -1,12 +1,53 @@
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Handle client-side navigation
+function navigateTo(path) {
+    // Update the URL without full page reload
+    window.history.pushState({}, '', path);
+    // Update the active state in navigation
+    updateActiveLink();
+    // Scroll to top on page change
+    window.scrollTo(0, 0);
+}
+
+// Smooth scrolling for anchor links on the same page
+document.addEventListener('click', function(e) {
+    // Handle internal anchor links
+    if (e.target.matches('a[href^="#"]')) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    }
+    // Handle internal page navigation
+    else if (e.target.matches('a[href^="/"]') || e.target.closest('a[href^="/"]')) {
+        e.preventDefault();
+        const link = e.target.matches('a') ? e.target : e.target.closest('a');
+        const path = link.getAttribute('href');
+        navigateTo(path);
+    }
 });
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function() {
+    updateActiveLink();
+    window.scrollTo(0, 0);
+});
+
+// Update active link in navigation
+function updateActiveLink() {
+    const path = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === path) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Initialize active link on page load
+document.addEventListener('DOMContentLoaded', updateActiveLink);
 
 // Navbar background change on scroll
 const navbar = document.querySelector('.navbar');
