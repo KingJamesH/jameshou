@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/websitepic.png') }}" alt="James Hou" class="profile-img">
+            </div>
+            <div class="about-text">
+                <p>I'm a sophomore at Newark Academy with a passion for computer science and engineering.</p>
+                <h3 class="interests-title">Interests: </h3>
+                <div class="interests-grid">
+                    <div class="interest-item">
+                        <i class="fas fa-brain"></i>
+                        <span>Machine Learning</span>
+                    </div>
+                    <div class="interest-item">
+                        <i class="fas fa-eye"></i>
+                        <span>Computer Vision</span>
+                    </div>
+                    <div class="interest-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Robotics</span>
+                    </div>
+                    <div class="interest-item">
+                        <i class="fas fa-code"></i>
+                        <span>Software Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Hou</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Montserrat:wght@900&family=Abril+Fatface&family=Poppins:wght@900&family=Merriweather:wght@900&family=Oswald:wght@700&family=Archivo+Black&family=Anton&family=Bebas+Neue&family=Bodoni+Moda:wght@900&family=Castoro&family=Chakra+Petch:wght@700&family=Fjalla+One&family=Heebo:wght@900&family=IBM+Plex+Sans+Condensed:wght@700&family=Kanit:wght@900&family=Libre+Baskerville:wght@700&family=Noto+Serif+Display:wght@900&family=Oswald:wght@700&family=PT+Sans+Narrow:wght@700&family=Roboto+Condensed:wght@700&family=Staatliches&family=Titillium+Web:wght@900&family=Yanone+Kaffeesatz:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">James Hou</div>
+            <ul class="nav-links">
+                <li><a href="/" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="/about" class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="/skills" class="{% if active_page == 'skills' %}active{% endif %}">Skills</a></li>
+                <li><a href="/portfolio" class="{% if active_page == 'portfolio' %}active{% endif %}">Portfolio</a></li>
+                <li><a href="/contact" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% if active_page != 'home' %}
+        <script>
+            // Scroll to top on page load for all pages except home
+            document.addEventListener('DOMContentLoaded', function() {
+                window.scrollTo(0, 0);
+            });
+        </script>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>
