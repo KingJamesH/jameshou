@@ -3,7 +3,7 @@
 {% block content %}
 <section class="contact-section">
     <h2 class="section-title">Contact</h2>
-    <p>I don't know what to put here!</p>
+    <p class="section-subtitle">I don't know what to put here!</p>
     <div class="contact-links">
         <a href="mailto:james.william.hou@gmail.com" class="contact-item" aria-label="Email">
             <div class="contact-icon">
@@ -17,18 +17,19 @@
             </div>
             <span class="contact-name">GitHub</span>
         </a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="LinkedIn">
+        <a href="https://devpost.com/kingjamesh?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Devpost">
             <div class="contact-icon">
-                <i class="fab fa-linkedin-in"></i>
+                <img src="{{ url_for('static', filename='images/logos/devpost.png') }}" alt="Devpost" onerror="this.style.display='none';">
             </div>
-            <span class="contact-name">LinkedIn</span>
+            <span class="contact-name">Devpost</span>
         </a>
-        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Twitter">
+        <a href="https://www.instagram.com/james.hou8/" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Instagram">
             <div class="contact-icon">
-                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
             </div>
-            <span class="contact-name">Twitter</span>
+            <span class="contact-name">Instagram</span>
         </a>
+
     </div>
 </section>
 {% endblock %}

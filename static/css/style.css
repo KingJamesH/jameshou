@@ -161,23 +161,39 @@ main {
 
 .social-links {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-    align-items: center;   
-    align-content: center;  
-    align-self: center;
+    margin: 1.5rem auto 0;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 300px;
 }
 
 .social-links a {
     color: var(--white);
     font-size: 1.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.social-links img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
     color: var(--neon-green);
     transform: translateY(-3px);
+}
+
+.social-links a:hover img {
+    filter: brightness(0) invert(78%) sepia(90%) saturate(1000%) hue-rotate(50deg) brightness(110%) contrast(100%);
 }
 
 /* About Page */
@@ -251,7 +267,6 @@ main {
 .interest-item:hover {
     transform: translateY(-3px);
     background: rgba(var(--boxr), var(--boxg), var(--boxb), 0.1);
-    border-color: var(--neon-green);
 }
 
 .interest-item i {
@@ -334,7 +349,7 @@ main {
 }
 
 .skills-category {
-    margin: 1rem 0;
+    margin: 2rem 0;
     position: relative;
     background: rgba(var(--boxr), var(--boxg), var(--boxb), 0.03);
     padding: 1.5rem;
@@ -347,7 +362,7 @@ main {
     font-size: 1.3rem;
     color: var(--white);
     margin-bottom: 1.25rem;
-    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    font-family: 'Castoro', serif;
     font-weight: 400;
     position: relative;
     display: inline-block;
@@ -425,6 +440,16 @@ main {
     gap: 2.5rem;
     margin-top: 1rem;
     align-content: center;
+}
+
+.frameworks-section h3,
+.tools-section h3 {
+    font-family: 'Castoro', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+    position: relative;
+    display: inline-block;
 }
 
 .frameworks-section,
@@ -687,6 +712,19 @@ main {
     transform: translateY(-2px);
 }
 
+.btn-link i,
+.btn-link img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* Make Devpost logo in portfolio neon green */
+.portfolio-section .btn-link img[alt="Devpost"] {
+    filter: invert(78%) sepia(90%) saturate(1000%) hue-rotate(50deg) brightness(110%) contrast(100%);
+}
+
 .btn-link i {
     font-size: 0.9em;
 }
@@ -721,9 +759,11 @@ main {
 
 .contact-section p {
     margin-top: 2rem;
-    margin-bottom: 3rem;
-    max-width: 800px;
+    margin-bottom: 1.5rem;
+    max-width: 1200px;
     font-size: 1.2rem;
+    align-items: center;
+    text-align: center;
 }
 
 .contact-category {
@@ -756,10 +796,12 @@ main {
 }
 
 .contact-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 1rem;
-    /* margin-top: 1rem; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .contact-item {
@@ -767,7 +809,8 @@ main {
     flex-direction: column;
     align-items: center;
     transition: all 0.2s ease;
-    padding: 1rem 0.5rem;
+    padding: 1rem 1.5rem;
+    min-width: 100px;
     border-radius: 6px;
     background: transparent;
     border: 1px solid transparent;
@@ -789,6 +832,12 @@ main {
     justify-content: center;
     margin-bottom: 0.75rem;
     font-size: 1.5rem;
+}
+
+.contact-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
 }
 
 .contact-name {
