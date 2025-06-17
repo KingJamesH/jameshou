@@ -349,7 +349,7 @@ main {
 }
 
 .skills-category {
-    margin: 2rem 0;
+    margin: 1rem 0;
     position: relative;
     background: rgba(var(--boxr), var(--boxg), var(--boxb), 0.03);
     padding: 1.5rem;
