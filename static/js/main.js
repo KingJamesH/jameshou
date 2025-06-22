@@ -29,28 +29,43 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.nav-links a');
+// Only run this on the homepage where we need scroll-based navigation
+if (window.location.pathname === '/') {
+    const navItems = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').includes(current)) {
-            item.classList.add('active');
-        }
-    });
-});
+    function updateActiveNav() {
+        let current = '';
+        const scrollPosition = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (current && item.getAttribute('href') === `#${current}`) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+
+    // Run once on page load
+    updateActiveNav();
+
+    // Then run on scroll with debounce for better performance
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(updateActiveNav, 50);
+    }, false);
+}
 
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.fade-in');

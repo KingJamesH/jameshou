@@ -14,6 +14,7 @@ html {
     --neon-green: #36ff54;
     --dark-navy: #020c1b;
     --slate: #8892b0;
+    --light-gray: #d6d6d6;
     
     --navbar-color: rgb(0, 11, 21);
     --boxr: 100;
@@ -666,11 +667,17 @@ main {
     margin-bottom: 1.2rem;
 }
 
-.portfolio-section .projects-grid .project-card .project-description {
+.portfolio-section .projects-grid .project-card .project-description p {
     color: var(--light-gray) !important;
     margin-bottom: 1.5rem !important;
-    font-size: 1.2rem !important;
-    line-height: 1.6 !important;
+    font-size: 5rem !important;
+    /* line-height: 1.6 !important; */
+}  
+
+p.project-description {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--light-gray) !important;
 }
 
 .project-tags {
