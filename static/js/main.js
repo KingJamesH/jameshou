@@ -1,4 +1,3 @@
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -8,7 +7,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
@@ -21,11 +19,9 @@ window.addEventListener('scroll', () => {
     }
     
     if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
-        // Scroll down
         navbar.classList.remove('scroll-up');
         navbar.classList.add('scroll-down');
     } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
-        // Scroll up
         navbar.classList.remove('scroll-down');
         navbar.classList.add('scroll-up');
     }
@@ -33,7 +29,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Add active class to current section in navigation
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-links a');
 
@@ -57,7 +52,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Add animation to elements when they come into view
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.fade-in');
     
@@ -72,7 +66,6 @@ const animateOnScroll = () => {
     });
 };
 
-// Set initial state for fade-in elements
 document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => {
@@ -81,14 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
     
-    // Trigger animation for elements already in view
     animateOnScroll();
 });
 
-// Listen for scroll events to trigger animations
 window.addEventListener('scroll', animateOnScroll);
 
-// Mobile menu toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -99,7 +89,6 @@ if (mobileMenuToggle) {
     });
 }
 
-// Close mobile menu when clicking on a nav link
 const navLinksList = document.querySelectorAll('.nav-links a');
 navLinksList.forEach(link => {
     link.addEventListener('click', () => {
@@ -110,7 +99,6 @@ navLinksList.forEach(link => {
     });
 });
 
-// Add hover effect to project cards
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -122,18 +110,15 @@ projectCards.forEach(card => {
     });
 });
 
-// Form submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Add your form submission logic here
         alert('Thank you for your message! I will get back to you soon.');
         contactForm.reset();
     });
 }
 
-// Add current year to footer
 const currentYear = new Date().getFullYear();
 const yearElement = document.querySelector('.current-year');
 if (yearElement) {

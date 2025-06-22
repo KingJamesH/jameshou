@@ -1,16 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/portfolio-filter.js') }}"></script>
+{% endblock %}
 <section class="portfolio-section">
     <div class="container">
         <h2 class="section-title">Portfolio</h2>
-        <p class="section-subtitle">Projects I've worked on so far in high school.</p>
+        <p class="section-subtitle">CS and Engineering projects I've worked on so far in high school.</p>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="cs">Computer Science</button>
+            <button class="filter-btn" data-filter="engineering">Engineering</button>
+        </div>
         
         <div class="projects-grid">
             <!-- Project 1 -->
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-category="cs">
                 <div class="project-image">
                     <img src="{{ url_for('static', filename='images/projects/project1.png') }}" alt="Project 1" onerror="this.style.display='none';">
+                    <span class="category-label">CS</span>
                 </div>
                 <h3>QLess - HackMHS</h3>
                 <div class="project-date">May 2025</div>
@@ -41,9 +51,10 @@
             </div>
             
             <!-- Project 2 -->
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-category="engineering">
                 <div class="project-image">
                     <img src="{{ url_for('static', filename='images/projects/project2.png') }}" alt="Project 2" onerror="this.style.display='none';">
+                    <span class="category-label">Engineering</span>
                 </div>
                 <h3>Project Title 2</h3>
                 <div class="project-date">June 2025</div>
@@ -97,7 +108,7 @@
                 <div class="project-tags">
                     <span class="tag">Placeholder</span>
                 </div>
-                
+
                 <div class="project-links">
                     <a href="#" class="btn-link">
                         <i class="fab fa-github"></i> GitHub
