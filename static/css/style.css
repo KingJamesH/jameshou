@@ -9,7 +9,7 @@ html {
 /* Hide Scrollbar */
 ::-webkit-scrollbar {
     display: none;
-}
+} 
 
 html {
     -ms-overflow-style: none;  
@@ -19,7 +19,7 @@ html {
 :root {
     --navy: #08142e;
     --white: #e6f1ff;
-    /* --neon-green: #36ff54; */
+    /* #FFC125 */
     --neon-green: #36ff54;
     --dark-navy: #020c1b;
     --slate: #8892b0;
@@ -170,8 +170,8 @@ p {
     background: rgba(0, 0, 0, 0.6);
     border: 2px solid rgba(255, 255, 255, 0.2);
     color: white;
-    width: 44px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -529,6 +529,7 @@ main {
     padding: 2rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    /* overflow: hidden; */
 }
 
 .about-content {
@@ -1095,6 +1096,7 @@ p.project-description {
     padding: 2rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    overflow:hidden;
 }
 
 .contact-content {
@@ -1134,7 +1136,7 @@ p.project-description {
     padding: 1.5rem;
     border-radius: 6px;
     border: 1px solid rgba(var(--boxr), var(--boxg), 123, 0.1);
-}
+} 
 
 .contact-category h3 {
     font-size: 1.3rem;
@@ -1238,7 +1240,7 @@ p.project-description {
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeIn { 
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
@@ -1247,7 +1249,6 @@ p.project-description {
     animation: fadeIn 0.6s ease forwards;
 }
 
-/* Utility Classes */
 .highlight {
     color: var(--neon-green);
 }
