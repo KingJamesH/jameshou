@@ -9,8 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Montserrat:wght@900&family=Abril+Fatface&family=Poppins:wght@900&family=Merriweather:wght@900&family=Oswald:wght@700&family=Archivo+Black&family=Anton&family=Bebas+Neue&family=Bodoni+Moda:wght@900&family=Castoro&family=Chakra+Petch:wght@700&family=Fjalla+One&family=Heebo:wght@900&family=IBM+Plex+Sans+Condensed:wght@700&family=Kanit:wght@900&family=Libre+Baskerville:wght@700&family=Noto+Serif+Display:wght@900&family=Oswald:wght@700&family=PT+Sans+Narrow:wght@700&family=Roboto+Condensed:wght@700&family=Staatliches&family=Titillium+Web:wght@900&family=Yanone+Kaffeesatz:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2308142e'/><text x='50%' y='75%' font-size='70' text-anchor='middle' fill='%2336ff54' font-family='Castoro, sans-serif' font-weight='bold'>JH</text></svg>">
 </head>
 <body>
+    <!-- 3D Background Container -->
+    <div id="webgl-bg" class="three-bg"></div>
+    
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">James Hou</div>
@@ -29,6 +34,19 @@
     </main>
 
     {% block scripts %}
+        <!-- Three.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- GSAP for animations (kept for other animations) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <!-- Our 3D effects (simplified) -->
+        <script src="{{ url_for('static', filename='js/threejs-effects.js') }}"></script>
+        <!-- Three.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- GSAP for smooth animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <!-- Our 3D effects -->
+        <script src="{{ url_for('static', filename='js/threejs-effects.js') }}"></script>
+        <!-- Main JS -->
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
         {% if active_page != 'home' %}
         <script>

@@ -1,0 +1,103 @@
+/* 3D Background Styles */
+.three-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Page Transition Effects */
+#page-wrapper {
+    position: relative;
+    min-height: 100vh;
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    perspective: 1200px;
+}
+
+/* 3D Card Effect on Hover for Portfolio Items */
+.portfolio-item {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D Text Effect */
+.three-d-text {
+    display: inline-block;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.three-d-text span {
+    display: inline-block;
+    transform: translateZ(20px);
+    text-shadow: 1px 1px 0 #ccc,
+                 2px 2px 0 #ccc,
+                 3px 3px 0 #ccc,
+                 4px 4px 0 #ccc;
+    transition: transform 0.3s ease;
+}
+
+/* 3D Button Effect */
+.btn-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.2s, box-shadow 0.2s;
+    transform: translateZ(0);
+}
+
+.btn-3d:active {
+    transform: translateY(5px) translateZ(0);
+}
+
+/* 3D Card */
+.card-3d {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+}
+
+.card-3d:hover {
+    transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading Animation */
+@keyframes float {
+    0% { transform: translateY(0px) rotateY(0deg); }
+    50% { transform: translateY(-20px) rotateY(180deg); }
+    100% { transform: translateY(0px) rotateY(360deg); }
+}
+
+.loading-cube {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .three-bg {
+        opacity: 0.2;
+    }
+    
+    .portfolio-item:hover {
+        transform: translateY(-5px);
+    }
+}

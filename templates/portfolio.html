@@ -19,12 +19,12 @@
             <!-- Project 1 -->
             <div class="project-card fade-in" data-category="cs">
                 <div class="project-image">
-                    <img src="{{ url_for('static', filename='images/projects/project1.png') }}" alt="Project 1" onerror="this.style.display='none';">
+                    <img src="{{ url_for('static', filename='images/projects/p1qless/project1.png') }}" alt="Project 1" onerror="this.style.display='none';">
                     <span class="category-label">CS</span>
                 </div>
                 <h3>QLess - HackMHS</h3>
                 <div class="project-date">May 2025</div>
-                <p class="project-description">A web application that helps small businesses connect with customers by allowing them to update real-time information, enhancing the overall dining experience.</p>
+                <!-- <p class="project-description">A web application that helps small businesses connect with customers by allowing them to update real-time information, enhancing the overall dining experience.</p>
                 <div class="project-tags">
                     <span class="tag">HTML</span>
                     <span class="tag">CSS</span>
@@ -33,7 +33,7 @@
                     <span class="tag">Flask</span>
                     <span class="tag">Git</span>
                     <span class="tag">Vercel</span>
-                    <span class="tag">API</span>
+                    <span class="tag">API</span> 
                 </div>
                 
                 <div class="project-links">
@@ -46,7 +46,7 @@
                     <a href="https://devpost.com/software/qless-u6o9ty" target = "_blank" class = "btn-link">
                         <img src="{{ url_for('static', filename='images/logos/devpost.svg') }}" alt="Devpost" onerror="this.style.display='none';"> Devpost
                     </a>
-                </div>
+                </div> -->
             </div>
             
             <!-- Project 2 -->
@@ -57,7 +57,7 @@
                 </div>
                 <h3>Project Title 2</h3>
                 <div class="project-date">June 2025</div>
-                <p class="project-description">Placeholder</p>
+                <!-- <p class="project-description">Placeholder</p>
                 
                 <div class="project-tags">
                     <span class="tag">C++</span>
@@ -70,7 +70,7 @@
                     <a href="#" class="btn-link">
                         <i class="fab fa-github"></i> Code
                     </a>
-                </div>
+                </div> -->
             </div>
             
             <!-- Project 3 -->
@@ -80,7 +80,7 @@
                 </div>
                 <h3>Project Title 3</h3>
                 <div class="project-date">April 2025</div>
-                <p class="project-description">Placeholder.</p>
+                <!-- <p class="project-description">Placeholder.</p>
                 
                 <div class="project-tags">
                     <span class="tag">Placeholder</span>
@@ -93,7 +93,7 @@
                     <a href="#" class="btn-link">
                        Devpost
                     </a>
-                </div>
+                </div> -->
             </div>
 
             <div class="project-card fade-in">
@@ -102,7 +102,7 @@
                 </div>
                 <h3>Project Title 4</h3>
                 <div class="project-date">April 2025</div>
-                <p class="project-description">Placeholder.</p>
+                <!-- <p class="project-description">Placeholder.</p>
                 
                 <div class="project-tags">
                     <span class="tag">Placeholder</span>
@@ -116,8 +116,290 @@
                        Devpost
                     </a>
                 </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded');
+    
+    const projectCards = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('projectModal');
+    const modalBody = document.querySelector('.modal-body');
+    const closeBtn = document.querySelector('.close-modal');
+    
+    console.log('Found', projectCards.length, 'project cards');
+    
+    const projectsData = {
+        'QLess - HackMHS': {
+            title: 'QLess - HackMHS',
+            description: 'A web application that helps small businesses connect with customers by allowing them to update real-time information, enhancing the overall dining experience.',
+            date: 'May 2025',
+            tags: ['HTML', 'CSS', 'JavaScript', 'Python', 'Flask', 'Git', 'Vercel', 'API'],
+            links: [
+                { type: 'website', url: 'https://qless-hackmhsx.vercel.app/' },
+                { type: 'github', url: 'https://github.com/KingJamesH/qless' },
+                { type: 'devpost', url: 'https://devpost.com/software/qless-u6o9ty' }
+            ],
+            images: [
+                '{{ url_for("static", filename="images/projects/p1qless/ss1.png") }}',
+                '{{ url_for("static", filename="images/projects/p1qless/ss2.png") }}',
+                '{{ url_for("static", filename="images/projects/p1qless/ss3.png") }}',
+            ]
+        },
+        'Project Title 2': { 
+            title: 'Project Title 2',
+            description: 'Placeholder description for project 2',
+            date: 'June 2025',
+            tags: ['C++'],
+            links: [
+                { type: 'website', url: '#' },
+                { type: 'github', url: '#' }
+            ],
+            images: [
+                '{{ url_for("static", filename="images/projects/project2.png") }}',
+            ]
+        },
+        'Project Title 3': {
+            title: 'Project Title 3',
+            description: 'Placeholder description for project 3',
+            date: 'April 2025',
+            tags: ['Placeholder'],
+            links: [
+                { type: 'github', url: '#' },
+                { type: 'devpost', url: '#' }
+            ],
+            images: [
+                '{{ url_for("static", filename="images/projects/project3.png") }}',
+            ]
+        }
+    };
+
+    function createCarousel(images, title) {
+        return `
+            <div class="modal-gallery">
+                <div class="main-image">
+                    ${images.map((img, index) => `
+                        <img src="${img}" alt="${title} - Image ${index + 1}" 
+                             class="${index === 0 ? 'active' : 'hidden'}" 
+                             data-index="${index}">
+                    `).join('')}
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev-btn" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next-btn" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                ${images.length > 1 ? `
+                    <div class="carousel-indicators">
+                        ${images.map((_, index) => `
+                            <div class="carousel-indicator ${index === 0 ? 'active' : ''}" 
+                                 data-index="${index}"></div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>`;
+    }
+
+    function updateCarousel(container, currentIndex, total) {
+        const images = container.querySelectorAll('.main-image img');
+        images.forEach((img, index) => {
+            if (index === currentIndex) {
+                img.classList.add('active');
+                img.classList.remove('hidden');
+            } else {
+                img.classList.remove('active');
+                img.classList.add('hidden');
+            }
+        });
+
+        const indicators = container.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+
+        const prevBtn = container.querySelector('.prev-btn');
+        const nextBtn = container.querySelector('.next-btn');
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === total - 1;
+    }
+
+    function initCarousel(container, images) {
+        let currentIndex = 0;
+        const totalImages = images.length;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        updateCarousel(container, currentIndex, totalImages);
+
+        const prevBtn = container.querySelector('.prev-btn');
+        const nextBtn = container.querySelector('.next-btn');
+        const indicators = container.querySelectorAll('.carousel-indicator');
+        const mainImage = container.querySelector('.main-image');
+
+        const goToPrev = () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel(container, currentIndex, totalImages);
+            }
+        };
+
+        const goToNext = () => {
+            if (currentIndex < totalImages - 1) {
+                currentIndex++;
+                updateCarousel(container, currentIndex, totalImages);
+            }
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', goToPrev);
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', goToNext);
+        }
+
+        container.setAttribute('tabindex', '0');
+        container.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                goToPrev();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                goToNext();
+            } else if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        if (mainImage) {
+            mainImage.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            mainImage.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        const handleSwipe = () => {
+            const swipeThreshold = 50;
+            const difference = touchStartX - touchEndX;
+
+            if (Math.abs(difference) > swipeThreshold) {
+                if (difference > 0) {
+                    goToNext();
+                } else {
+                    goToPrev();
+                }
+            }
+        };
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel(container, currentIndex, totalImages);
+            });
+        });
+    }
+
+    function openModal(projectData) {
+        let modalContent = `
+            ${createCarousel(projectData.images, projectData.title)}
+            <div class="project-details">
+                <h2>${projectData.title}</h2>
+                <div class="project-meta">
+                    <span class="project-date">${projectData.date}</span>
+                </div>
+                <p>${projectData.description}</p>
+                <div class="project-tags">
+                    ${projectData.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <div class="project-links">
+                    ${projectData.links.map(link => {
+                        if (link.type === 'github') {
+                            return `<a href="${link.url}" target="_blank" class="btn-link"><i class="fab fa-github"></i> Code</a>`;
+                        } else if (link.type === 'website') {
+                            return `<a href="${link.url}" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Website</a>`;
+                        } else if (link.type === 'devpost') {
+                            return `<a href="${link.url}" target="_blank" class="btn-link"><img src="/static/images/logos/devpost.svg" alt="Devpost" onerror="this.style.display='none';"> Devpost</a>`;
+                        }
+                        return '';
+                    }).join('')}
+                </div>
+            </div>`;
+
+        modalBody.innerHTML = modalContent;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        if (projectData.images.length > 1) {
+            const carouselContainer = modalBody.querySelector('.modal-gallery');
+            initCarousel(carouselContainer, projectData.images);
+        }
+    }
+
+    function closeModal() {
+        console.log('Closing modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    projectCards.forEach(card => {
+        const projectTitle = card.querySelector('h3').textContent.trim();
+        card.setAttribute('data-project-title', projectTitle);
+        
+        card.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' || e.target.closest('a') || 
+                e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                return;
+            }
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const title = this.getAttribute('data-project-title');
+            const projectData = projectsData[title];
+            
+            console.log('Clicked on project card:', title);
+            
+            if (projectData) {
+                console.log('Opening modal for project:', projectData.title);
+                openModal(projectData);
+            } else {
+                console.warn('No project data found for:', title);
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', function() {
+        closeModal();
+    });
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
+    });
+</script>
 {% endblock %}
