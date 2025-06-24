@@ -12,8 +12,7 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2308142e'/><text x='50%' y='75%' font-size='70' text-anchor='middle' fill='%2336ff54' font-family='Castoro, sans-serif' font-weight='bold'>JH</text></svg>">
 </head>
-<body>
-    <!-- 3D Background Container -->
+<body> 
     <div id="webgl-bg" class="three-bg"></div>
     
     <nav class="navbar">
@@ -34,19 +33,12 @@
     </main>
 
     {% block scripts %}
-        <!-- Three.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <!-- GSAP for animations (kept for other animations) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-        <!-- Our 3D effects (simplified) -->
         <script src="{{ url_for('static', filename='js/threejs-effects.js') }}"></script>
-        <!-- Three.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <!-- GSAP for smooth animations -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-        <!-- Our 3D effects -->
         <script src="{{ url_for('static', filename='js/threejs-effects.js') }}"></script>
-        <!-- Main JS -->
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
         {% if active_page != 'home' %}
         <script>
