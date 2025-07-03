@@ -50,12 +50,12 @@
             </div>
             
             <!-- Project 2 -->
-            <div class="project-card fade-in" data-category="engineering">
+            <div class="project-card fade-in" data-category="cs">
                 <div class="project-image">
-                    <img src="{{ url_for('static', filename='images/projects/project2.png') }}" alt="Project 2" onerror="this.style.display='none';">
-                    <span class="category-label">Engineering</span>
+                    <img src="{{ url_for('static', filename='images/projects/p2pw/ss1.png') }}" alt="Project 2" onerror="this.style.display='none';">
+                    <span class="category-label">CS</span>
                 </div>
-                <h3>Project Title 2</h3>
+                <h3>Personal Website</h3>
                 <div class="project-date">June 2025</div>
                 <!-- <p class="project-description">Placeholder</p>
                 
@@ -64,7 +64,7 @@
                 </div>
                 
                 <div class="project-links">
-                    <a href="#" class="btn-link">
+                    <a href="#" class="btn-link"> 
                         <i class="fas fa-external-link-alt"></i> Website
                     </a>
                     <a href="#" class="btn-link">
@@ -74,12 +74,13 @@
             </div>
             
             <!-- Project 3 -->
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-category="engineering">
                 <div class="project-image">
-                    <img src="{{ url_for('static', filename='images/projects/project3.png') }}" alt="Project 3" onerror="this.style.display='none';">
+                    <img src="{{ url_for('static', filename='images/projects/p3ws/ss1.jpeg') }}" alt="Project 3" onerror="this.style.display='none';">
+                    <span class="category-label">ENG</span>
                 </div>
-                <h3>Project Title 3</h3>
-                <div class="project-date">April 2025</div>
+                <h3>Weather Station</h3>
+                <div class="project-date">June 2025</div>
                 <!-- <p class="project-description">Placeholder.</p>
                 
                 <div class="project-tags">
@@ -96,12 +97,13 @@
                 </div> -->
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-category="cs">
                 <div class="project-image">
-                    <img src="{{ url_for('static', filename='images/projects/project3.png') }}" alt="Project 3" onerror="this.style.display='none';">
+                    <img src="{{ url_for('static', filename='images/projects/p4as/pic.png') }}" alt="Project 4" onerror="this.style.display='none';">
+                    <span class="category-label">CS</span>
                 </div>
-                <h3>Project Title 4</h3>
-                <div class="project-date">April 2025</div>
+                <h3>AccessiStudy</h3>
+                <div class="project-date">June 2025</div>
                 <!-- <p class="project-description">Placeholder.</p>
                 
                 <div class="project-tags">
@@ -157,29 +159,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 '{{ url_for("static", filename="images/projects/p1qless/ss3.png") }}',
             ]
         },
-        'Project Title 2': { 
-            title: 'Project Title 2',
-            description: 'Placeholder description for project 2',
+        'Personal Website': { 
+            title: 'Personal Website',
+            description: 'My personal website (this website)',
             date: 'June 2025',
-            tags: ['C++', 'Adafruit ESP32-S2 TFT Feather', 'PlatformIO', 'Github'],
+            tags: ['HTML', 'CSS', 'JavaScript', 'Python', 'Flask', 'Git', 'Vercel', 'Github', 'Three.js'],
             links: [
-                { type: 'github', url: '#' }
+                { type: 'github', url: 'https://github.com/KingJamesH/jameshou' }
             ],
             images: [
-                '{{ url_for("static", filename="images/projects/project2.png") }}',
+                '{{ url_for("static", filename="images/projects/p2pw/ss1.png") }}',
             ]
         },
-        'Project Title 3': {
-            title: 'Project Title 3',
-            description: 'Placeholder description for project 3',
-            date: 'April 2025',
-            tags: ['Placeholder'],
+        'Weather Station': {
+            title: 'Weather Station',
+            description: 'Weather station to monitor air quality. Uses ESP32, BME688, GPS featherwing, RYLR998. Used 3 microcontrollers - one to collect data, one to extend range and transfer data, and one central microcontroller to track data.',
+            date: 'June 2025',
+            tags: ['C++', 'PlatformIO', 'AdaFruitIO', 'Git', 'Github'],
             links: [
-                { type: 'github', url: '#' },
-                { type: 'devpost', url: '#' }
+                // { type: 'github', url: '#' },
             ],
             images: [
-                '{{ url_for("static", filename="images/projects/project3.png") }}',
+                '{{ url_for("static", filename="images/projects/p3ws/ss1.jpeg") }}',
+            ]
+        },
+        'AccessiStudy': {
+            title: 'AccessiStudy',
+            description: 'Chrome extension that injects accessibility features into websites using DOM manipulation',
+            date: 'June 2025',
+            tags: ['HTML', 'CSS', 'JavaScript', 'Git', 'Github', 'Gemini API', 'Chrome Extension API'],
+            links: [
+                { type: 'github', url: 'https://github.com/KingJamesH/AccessiStudy' },
+                { type: 'devpost', url: 'https://devpost.com/software/accessistudy' },
+            ],
+            images: [
+                '{{ url_for("static", filename="images/projects/p4as/ss6.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss7.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss1.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss2.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss3.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss4.png") }}',
+                '{{ url_for("static", filename="images/projects/p4as/ss5.png") }}',
             ]
         }
     };
